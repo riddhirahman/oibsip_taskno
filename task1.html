@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo Landing Page</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f5f9f4;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        header {
+            background-color: #6200ea;
+            color: #fff;
+            padding: 20px 10%;
+            text-align: center;
+            animation: fadeInDown 1.5s;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+
+        nav {
+            margin-top: 10px;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1.1em;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            width: 0;
+            height: 2px;
+            background-color: #03dac5;
+            transition: width 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 50px 10%;
+            background: linear-gradient(to bottom, #6200ea, #3700b3);
+            color: #fff;
+            animation: fadeIn 2s;
+        }
+
+        .hero h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+        }
+
+        .hero button {
+            background-color: #03dac5;
+            color: #000;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.1em;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: transform 0.3s, background-color 0.3s;
+        }
+
+        .hero button:hover {
+            background-color: #018786;
+            transform: scale(1.1);
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 50px 10%;
+        }
+
+        .feature {
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transform: translateY(50px);
+            opacity: 0;
+            animation: slideUp 1.5s ease-in-out forwards;
+        }
+
+        .feature:nth-child(1) {
+            animation-delay: 0.5s;
+        }
+
+        .feature:nth-child(2) {
+            animation-delay: 0.7s;
+        }
+
+        .feature:nth-child(3) {
+            animation-delay: 0.9s;
+        }
+
+        .feature h3 {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+        }
+
+        .feature p {
+            font-size: 1em;
+            line-height: 1.5;
+        }
+
+        .feature button {
+            margin-top: 15px;
+            background-color: #6200ea;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1em;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .feature button:hover {
+            background-color: #3700b3;
+            transform: scale(1.1);
+        }
+
+        .testimonials {
+            background-color: #fff;
+            padding: 50px 10%;
+            text-align: center;
+        }
+
+        .testimonials h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        .testimonial {
+            margin-bottom: 30px;
+        }
+
+        .testimonial img {
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+            margin-bottom: 10px;
+        }
+
+        .testimonial p {
+            font-size: 1.1em;
+            margin: 0;
+        }
+
+        .team {
+            background-color: #f4f4f9;
+            padding: 50px 10%;
+            text-align: center;
+        }
+
+        .team h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        .team-member {
+            display: inline-block;
+            margin: 20px;
+            text-align: center;
+        }
+
+        .team-member img {
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            margin-bottom: 10px;
+        }
+
+        .team-member h3 {
+            font-size: 1.5em;
+            margin-bottom: 5px;
+        }
+
+        .team-member p {
+            font-size: 1em;
+            margin: 0;
+        }
+
+        footer {
+            background-color: #3700b3;
+            color: #fff;
+            text-align: center;
+            padding: 20px 10%;
+            margin-top: 20px;
+            animation: fadeInUp 1.5s;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 0.9em;
+        }
+
+        footer a {
+            color: #03dac5;
+            text-decoration: none;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>My Demo Landing Page</h1>
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="#">Services</a>
+            <a href="#">Contact</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h2>This is a landing page</h2>
+        <p> A responsive and visually appealing landing page using HTML and CSS, complete with animations and transitions for a modern design</p>
+        <button>Let's go!</button>
+    </section>
+
+    <section class="features">
+        <div class="feature">
+            <h3>Responsive Design</h3>
+            <p>Adjusts gracefully to different screen sizes.</p>
+            <button>Learn More</button>
+        </div>
+        <div class="feature">
+            <h3>Animations</h3>
+            <p>Enhances user experience with smooth visual effects.</p>
+            <button>Learn More</button>
+        </div>
+        <div class="feature">
+            <h3>Reusable Components</h3>
+            <p>Sections are easily extendable.</p>
+            <button>Learn More</button>
+        </div>
+    </section>
+
+    <section class="testimonials">
+        <h2>What Our Viewers Say</h2>
+        <div class="testimonial">
+            <img src="J:\Visual Studio Code\HTML\images\download.jpeg" alt="Client 1">
+            <p>"This is amazing!"</p>
+        </div>
+        <div class="testimonial">
+            <img src="J:\Visual Studio Code\HTML\images\download (6).jpeg" alt="Client 2">
+            <p>"I can't believe how much simple it is!"</p>
+        </div>
+        <div class="testimonial">
+            <img src="J:\Visual Studio Code\HTML\images\download (5).jpeg" alt="Client 3">
+            <p>"Highly attractive!"</p>
+        </div>
+    </section>
+
+    <section class="team">
+        <h2>Meet Our Team</h2>
+        <div class="team-member">
+            <img src="J:\Visual Studio Code\HTML\images\download (2).jpeg" alt="Team Member 1">
+            <h3>John Doe</h3>
+            <p>CEO</p>
+        </div>
+        <div class="team-member">
+            <img src="J:\Visual Studio Code\HTML\images\download (3).jpeg" alt="Team Member 2">
+            <h3>Jane Smith</h3>
+            <p>CTO</p>
+        </div>
+        <div class="team-member">
+            <img src="J:\Visual Studio Code\HTML\images\download (1).jpeg" alt="Team Member 3">
+            <h3>Emily Johnson</h3>
+            <p>COO</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; Riddhi Rahman. All rights reserved. | <a href="#">Privacy Policy</a></p>
+    </footer>
+</body
